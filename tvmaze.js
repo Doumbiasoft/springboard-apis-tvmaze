@@ -99,8 +99,6 @@ $searchForm.on("submit", async function (evt) {
 });
 
 $showsList.on("click", ".get-episodes", async function (e) {
-  $episodesList.empty();
-  $showItem.empty();
 
   // const show = document.querySelector(".Show");
   // const Id = show.dataset.showId;
@@ -154,8 +152,8 @@ async function getEpisodesOfShow(id) {
 /** Write a clear docstring for this function... */
 
 function populateEpisodes(episodes, show) {
-  //$episodesList.empty();
-  //$showItem.empty();
+  $episodesList.empty();
+  $showItem.empty();
 
   const $showr = $(
     `<div class="card mb-3 bg-danger" >
