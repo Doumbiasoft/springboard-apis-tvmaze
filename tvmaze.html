@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TV Maze</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/bootstrap/dist/css/bootstrap.css"
+    />
+  </head>
+  <body>
+    <div class="container small p-4">
+      <div class="bg-dark rounded-2 p-5">
+        <h1 class="text-danger p-4">TV Maze</h1>
+
+        <form class="form-inline" id="search-form">
+          <div class="col-12">
+            <div class="col-12">
+              <div class="input-group mb-3">
+                <input
+                  id="search-query"
+                  type="text"
+                  class="form-control"
+                  placeholder="Search show"
+                  aria-label="Search show"
+                  aria-describedby="search-query"
+                  required
+                />
+                <button class="btn btn-danger" type="submit">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    fill="currentColor"
+                    class="bi bi-search"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+                    /></svg
+                  >&nbsp;<b>Go!</b>
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+        <div class="row justify-content-center">
+          <div class="row g-4" id="shows-list">
+            <h1 class="text-danger text-center">
+              Enter the name of a show and get informations about it!
+            </h1>
+          </div>
+        </div>
+
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="staticBackdrop"
+          data-bs-backdrop="static"
+          data-bs-keyboard="false"
+          tabindex="-1"
+          aria-labelledby="staticBackdropLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-scrollable modal-lg">
+            <div class="modal-content bg-dark">
+              <div class="modal-header text-white">
+                <h1 class="modal-title fs-5 text-danger" id="staticBackdropLabel">
+                  TV Maze
+                </h1>
+                <button
+                  type="button"
+                  class="btn-close text-white bg-danger"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <section class="rounded-2 p-5" id="episodes-area">
+                  <div class="row justify-content-center">
+                    <!-- <ul id="episodes-list"></ul> -->
+                    <div class="row" id="showItem"></div>
+                    <p></p>
+                    <div class="row p-5">
+                      <h2 class="text-white">Episodes</h2>
+                      <p></p>
+                      <hr class="text-white" />
+                      <div>
+                        <table
+                          cellpadding="0"
+                          cellspacing="0"
+                          class="table text-white"
+                        >
+                          <tbody id="episodes-list"></tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <script
+          src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+          integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+          crossorigin="anonymous"
+        ></script>
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+          integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+          crossorigin="anonymous"
+        ></script>
+        <script src="http://unpkg.com/jquery"></script>
+        <script src="http://unpkg.com/axios/dist/axios.js"></script>
+        <script src="tvmaze.js"></script>
+      </div>
+    </div>
+  </body>
+</html>
