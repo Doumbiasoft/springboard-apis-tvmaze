@@ -12,11 +12,16 @@
   </head>
   <body>
     <div class="container small p-4">
-      <div class="bg-dark rounded-2 p-5">
-        <h1 class="text-danger p-4">TV Maze</h1>
+      <div class="bg-dark rounded-2 p-1">
+        <div class="px-3">
+          <h1 class="text-danger">TV Maze</h1>
+          <h4 class="text-white">
+            Enter the name of a show and get informations about it!
+          </h4>
+        </div>
 
         <form class="form-inline" id="search-form">
-          <div class="col-12">
+          <div class="col-12 p-3">
             <div class="col-12">
               <div class="input-group mb-3">
                 <input
@@ -46,12 +51,12 @@
             </div>
           </div>
         </form>
+        <h3 class="text-white px-3" >Shows</h3>
         <div class="row justify-content-center">
           <div class="row g-4" id="shows-list">
-            <h1 class="text-danger text-center">
-              Enter the name of a show and get informations about it!
-            </h1>
+           
           </div>
+          <p></p>
         </div>
 
         <!-- Modal -->
@@ -78,12 +83,12 @@
                 ></button>
               </div>
               <div class="modal-body">
-                <section class="rounded-2 p-5" id="episodes-area">
+                <section class="rounded-2" id="episodes-area">
                   <div class="row justify-content-center">
                     <!-- <ul id="episodes-list"></ul> -->
                     <div class="row" id="showItem"></div>
                     <p></p>
-                    <div class="row p-5">
+                    <div class="row p-0">
                       <h2 class="text-white">Episodes</h2>
                       <p></p>
                       <hr class="text-white" />

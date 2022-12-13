@@ -87,17 +87,24 @@ async function searchForShowAndDisplay() {
   if (!shows) return;
   populateShows(shows);
 }
-
+document.addEventListener("DOMContentLoaded",async()=>{
+  $("#search-query").val("");
+  const shows = await getShowsByTerm("A");
+  if (!shows) return;
+  populateShows(shows);
+});
 $searchForm.on("submit", async function (evt) {
   evt.preventDefault();
   await searchForShowAndDisplay();
 });
 
 $showsList.on("click", ".get-episodes", async function (e) {
+  $episodesList.empty();
+  $showItem.empty();
 
   // const show = document.querySelector(".Show");
-  // let Id = show.dataset.showId;
-  let Id = $(e.target).closest(".Show").data("show-id");
+  // const Id = show.dataset.showId;
+  const Id = $(e.target).closest(".Show").data("show-id");
   const show = await axios.get(`${BASE_URL}/shows/${Id}`);
 
   let val = {
@@ -108,9 +115,8 @@ $showsList.on("click", ".get-episodes", async function (e) {
     year: show.data.premiered ? show.data.premiered.split("-")[0] : 0,
     image: show.data.image ? show.data.image.original : defaultImageUrl,
   };
-  let episodes = await getEpisodesOfShow(Id);
+  const episodes = await getEpisodesOfShow(Id);
   populateEpisodes(episodes, val);
-  $episodesArea.show();
 });
 
 /** Given a show ID, get from API and return (promise) array of episodes:
@@ -148,10 +154,8 @@ async function getEpisodesOfShow(id) {
 /** Write a clear docstring for this function... */
 
 function populateEpisodes(episodes, show) {
-
-  $episodesList.empty();
-
-  $showItem.empty();
+  //$episodesList.empty();
+  //$showItem.empty();
 
   const $showr = $(
     `<div class="card mb-3 bg-danger" >
@@ -177,8 +181,11 @@ function populateEpisodes(episodes, show) {
 
     const $line = $(`
     <tr>
-    <td><img src="${episode.image}" height="40" alt="${episode.name}"></td>
-    <th scope="row">Season : ${episode.season}, Episode-${episode.number}</th>
+    <td>
+    <img src="${episode.image}" height="40" alt="${episode.name}"><br/>
+    S${episode.season}: Ep-${episode.number}
+    </td>
+    
     <td>${episode.name}</td>
     <td> <button class="btn btn-danger btn-sm">Play</button></td>
   </tr>
