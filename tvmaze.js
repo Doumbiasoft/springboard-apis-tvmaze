@@ -4,7 +4,6 @@
 const $showsList = $("#shows-list");
 const $episodesList = $("#episodes-list");
 const $showItem = $("#showItem");
-const $episodesArea = $("#episodes-area");
 const $searchForm = $("#search-form");
 const defaultImageUrl = "https://static.tvmaze.com/images/no-img/no-img-portrait-text.png";
 const BASE_URL = "https://api.tvmaze.com";
@@ -83,13 +82,13 @@ async function searchForShowAndDisplay() {
   const term = $("#search-query").val();
   const shows = await getShowsByTerm(term);
 
-  $episodesArea.hide();
   if (!shows) return;
   populateShows(shows);
 }
 document.addEventListener("DOMContentLoaded",async()=>{
   $("#search-query").val("");
   const shows = await getShowsByTerm("A");
+
   if (!shows) return;
   populateShows(shows);
 });
@@ -99,10 +98,12 @@ $searchForm.on("submit", async function (evt) {
 });
 
 $showsList.on("click", ".get-episodes", async function (e) {
+  $episodesList.empty();
+  $showItem.empty();
 
   // const show = document.querySelector(".Show");
-  // const Id = show.dataset.showId;
-  const Id = $(e.target).closest(".Show").data("show-id");
+  // let Id = show.dataset.showId;
+  let Id = $(e.target).closest(".Show").data("show-id");
   const show = await axios.get(`${BASE_URL}/shows/${Id}`);
 
   let val = {
@@ -113,7 +114,7 @@ $showsList.on("click", ".get-episodes", async function (e) {
     year: show.data.premiered ? show.data.premiered.split("-")[0] : 0,
     image: show.data.image ? show.data.image.original : defaultImageUrl,
   };
-  const episodes = await getEpisodesOfShow(Id);
+  let episodes = await getEpisodesOfShow(Id);
   populateEpisodes(episodes, val);
 });
 
@@ -152,8 +153,9 @@ async function getEpisodesOfShow(id) {
 /** Write a clear docstring for this function... */
 
 function populateEpisodes(episodes, show) {
-  $episodesList.empty();
-  $showItem.empty();
+
+  //$episodesList.empty();
+  //$showItem.empty();
 
   const $showr = $(
     `<div class="card mb-3 bg-danger" >
