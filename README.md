@@ -1,5 +1,5 @@
 # API Practice: TV Maze
-Unit 14.3: AJAX
+Unit 14.3: AJAX API
 
 Live at https://doumbiasoft.github.io/springboard-apis-tvmaze/
 
